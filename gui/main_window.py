@@ -67,6 +67,10 @@ class ThreatHunterGUI:
         
         self.results_text = scrolledtext.ScrolledText(results_frame, wrap=tk.WORD, width=80, height=25)
         self.results_text.grid(row=0, column=0, sticky=(tk.W, tk.E, tk.N, tk.S))
+
+        # Retry logic configurations
+        self.fallback_retries = 3  # number of retries
+        self.retry_delay = 5  # delay in seconds
         
         # Progress bar
         self.progress = ttk.Progressbar(main_frame, mode='indeterminate')
@@ -95,24 +99,33 @@ class ThreatHunterGUI:
             self.file_var.set(filename)
     
     def analyze_logs(self):
-        """Analyze the selected log file"""
-        log_file = self.file_var.get()
-        if not log_file:
-            messagebox.showerror("Error", "Please select a log file first.")
-            return
-        
-        if not Path(log_file).exists():
-            messagebox.showerror("Error", "Selected file does not exist.")
-            return
-        
-        # Run analysis in a separate thread to prevent GUI freezing
-        self.analyze_btn.config(state='disabled')
-        self.progress.start()
-        self.status_var.set("Analyzing logs...")
-        
-        thread = threading.Thread(target=self._analyze_worker, args=(log_file,))
-        thread.daemon = True
-        thread.start()
+        """Analyze the selected log file with retry mechanism"""
+        for attempt in range(self.fallback_retries):
+            log_file = self.file_var.get()
+            if not log_file:
+                messagebox.showerror("Error", "Please select a log file first.")
+                return
+            
+            if not Path(log_file).exists():
+                messagebox.showerror("Error", "Selected file does not exist.")
+                return
+            
+            # Run analysis in a separate thread to prevent GUI freezing
+            self.analyze_btn.config(state='disabled')
+            self.progress.start()
+            self.status_var.set(f"Analyzing logs... Attempt {attempt+1} of {self.fallback_retries}")
+            
+            thread = threading.Thread(target=self._analyze_worker, args=(log_file,))
+            thread.daemon = True
+            thread.start()
+            thread.join()
+            if self.status_var.get() != "Analysis failed":
+                break
+            self.progress.stop()
+            self.analyze_btn.config(state='normal')
+            if attempt < self.fallback_retries - 1:
+                messagebox.showinfo("Retry", f"Retrying in {self.retry_delay} seconds...")
+                self.root.after(self.retry_delay * 1000)  # Convert to milliseconds
     
     def _analyze_worker(self, log_file):
         """Worker function for log analysis (runs in separate thread)"""

@@ -1,0 +1,57 @@
+logging:
+  level: INFO
+  format: '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+  file: threathunter.log
+  max_file_size: 10485760
+  backup_count: 5
+detection_rules:
+  brute_force:
+    enabled: true
+    threshold: 5
+    time_window: 300
+    severity: HIGH
+    description: Multiple failed login attempts detected
+  privilege_escalation:
+    enabled: true
+    severity: HIGH
+    description: Privilege escalation attempt detected
+    suspicious_commands:
+    - sudo su
+    - runas
+    - net user
+    - whoami /priv
+  suspicious_processes:
+    enabled: true
+    severity: MEDIUM
+    description: Suspicious process execution detected
+    blacklisted_processes:
+    - powershell.exe -enc
+    - cmd.exe /c echo
+    - wscript.exe
+    - cscript.exe
+application:
+  version: 1.0.0
+  default_output_format: text
+  max_events_in_report: 1000
+  enable_gui_fallback: true
+  plugin_auto_discovery: true
+gui:
+  theme: dark
+  auto_refresh: 30
+  max_displayed_alerts: 50
+  enable_notifications: true
+  fallback:
+    enabled: true
+    retry_attempts: 3
+    retry_delay: 5
+integrations:
+  virustotal:
+    enabled: false
+    api_key: ''
+    rate_limit: 4
+    timeout: 30
+  elasticsearch:
+    enabled: false
+    host: localhost
+    port: 9200
+    index: threathunter

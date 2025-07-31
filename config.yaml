@@ -1,0 +1,191 @@
+# ThreatHunter Configuration File
+# Contains detection rules, application settings, and integration configurations
+
+# Logging Configuration
+logging:
+  level: INFO
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file: "threathunter.log"
+  max_file_size: 10485760  # 10MB
+  backup_count: 5
+
+# Detection Rules Configuration
+detection_rules:
+  # Brute Force Attack Detection
+  brute_force:
+    enabled: true
+    threshold: 5
+    time_window: 300  # seconds
+    severity: HIGH
+    description: "Multiple failed login attempts detected"
+    
+  # Privilege Escalation Detection
+  privilege_escalation:
+    enabled: true
+    suspicious_commands:
+      - "sudo su"
+      - "runas"
+      - "net user"
+      - "whoami /priv"
+    severity: HIGH
+    description: "Privilege escalation attempt detected"
+    
+  # Suspicious Process Creation
+  suspicious_processes:
+    enabled: true
+    blacklisted_processes:
+      - "powershell.exe -enc"
+      - "cmd.exe /c echo"
+      - "wscript.exe"
+      - "cscript.exe"
+      - "regsvr32.exe /s /u /i:"
+    severity: MEDIUM
+    description: "Suspicious process execution detected"
+    
+  # Lateral Movement Detection
+  lateral_movement:
+    enabled: true
+    indicators:
+      - "net use"
+      - "wmic /node:"
+      - "psexec"
+      - "schtasks /create /s"
+    severity: HIGH
+    description: "Lateral movement activity detected"
+    
+  # Data Exfiltration Detection
+  data_exfiltration:
+    enabled: true
+    suspicious_network_activity:
+      - large_file_transfers: 100000000  # 100MB
+      - unusual_ports: [4444, 5555, 8080, 9999]
+      - dns_tunneling_threshold: 50
+    severity: HIGH
+    description: "Potential data exfiltration detected"
+    
+  # Off-Hours Activity
+  off_hours_activity:
+    enabled: true
+    business_hours:
+      start: 8
+      end: 18
+      weekdays_only: true
+      timezone: "UTC"
+    severity: MEDIUM
+    description: "Activity detected outside business hours"
+    
+  # Account Anomalies
+  account_anomalies:
+    enabled: true
+    rules:
+      - new_user_creation: true
+      - password_changes: true
+      - group_modifications: true
+      - disabled_account_activity: true
+    severity: MEDIUM
+    description: "Account-related anomaly detected"
+
+# Application Settings
+application:
+  version: "1.0.0"
+  default_output_format: "text"
+  max_events_in_report: 1000
+  enable_gui_fallback: true
+  plugin_auto_discovery: true
+  
+# Output Configuration
+output:
+  default_format: "text"
+  default_file: "threathunter_output.txt"
+  include_raw_events: false
+  max_alert_details: 100
+  
+# Plugin Configuration
+plugins:
+  directories:
+    - "plugins"
+    - "detectors"
+    - "parsers" 
+    - "integrations"
+  auto_load: true
+  enabled_plugins:
+    - "behavior_detector"
+    - "windows_parser"
+    - "linux_parser"
+    
+# Integration Settings
+integrations:
+  # VirusTotal Integration
+  virustotal:
+    enabled: false
+    api_key: ""
+    rate_limit: 4  # requests per minute for free tier
+    timeout: 30
+    
+  # Elasticsearch Integration
+  elasticsearch:
+    enabled: false
+    host: "localhost"
+    port: 9200
+    index: "threathunter"
+    username: ""
+    password: ""
+    
+  # SIEM Integration
+  siem:
+    enabled: false
+    type: "splunk"  # splunk, qradar, arcsight
+    endpoint: ""
+    credentials: ""
+    
+  # Threat Intelligence Feeds
+  threat_intel:
+    enabled: false
+    feeds:
+      - name: "abuse_ch"
+        url: "https://feodotracker.abuse.ch/downloads/ipblocklist.txt"
+        type: "ip"
+      - name: "malware_domains"
+        url: "http://www.malwaredomainlist.com/hostslist/hosts.txt"
+        type: "domain"
+
+# GUI Configuration
+gui:
+  theme: "dark"
+  auto_refresh: 30  # seconds
+  max_displayed_alerts: 50
+  enable_notifications: true
+  fallback:
+    enabled: true
+    retry_attempts: 3
+    retry_delay: 5  # seconds
+    
+# Alert Thresholds and Scoring
+alert_scoring:
+  weights:
+    severity_high: 10
+    severity_medium: 5
+    severity_low: 1
+  thresholds:
+    critical: 25
+    high: 15
+    medium: 8
+    low: 3
+    
+# File Processing
+file_processing:
+  max_file_size: 1073741824  # 1GB
+  supported_formats:
+    - ".evtx"
+    - ".log"
+    - ".txt"
+    - ".csv"
+    - ".json"
+  chunk_size: 8192
+  
+# Performance Settings  
+performance:
+  max_concurrent_parsers: 4
+  memory_limit: 512  # MB
+  cache_size: 100  # number of cached results
+  timeout: 300  # seconds for analysis timeout
