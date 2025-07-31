@@ -171,7 +171,7 @@ threat_hunter/
 
 ```
 ╔═══════════════════════════════════════════╗
-║       🔍 THREAT HUNTER v1.0 Alpha        ║
+║          THREAT HUNTER v1.0 Alpha         ║
 ║      Log Analysis & Threat Detection      ║
 ╚═══════════════════════════════════════════╝
 
