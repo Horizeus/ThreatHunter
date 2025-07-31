@@ -44,8 +44,6 @@ A comprehensive Python toolkit for analyzing system logs (Windows/Linux) and det
    ```bash
    # If using git
    git clone https://github.com/Horizeus/ThreatHunter.git
-   
-   # Or download and extract the files
    ```
 
 2. **Install dependencies**
@@ -171,6 +169,7 @@ threat_hunter/
 
 ```
 ╔═══════════════════════════════════════════╗
+║         THREAT HUNTER v1.0 Alpha          ║
 ║          THREAT HUNTER v1.0 Alpha         ║
 ║      Log Analysis & Threat Detection      ║
 ╚═══════════════════════════════════════════╝
