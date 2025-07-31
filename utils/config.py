@@ -4,6 +4,7 @@ Manages application settings and configurations
 """
 
 import json
+import yaml
 import os
 from pathlib import Path
 
@@ -13,10 +14,12 @@ class Config:
         self.config_data = self._load_config()
     
     def _load_config(self):
-        """Load configuration from file or create default"""
+        """Load YAML or JSON configuration from file or create default"""
         if os.path.exists(self.config_file):
             try:
                 with open(self.config_file, 'r') as f:
+                    if self.config_file.endswith('.yaml') or self.config_file.endswith('.yml'):
+                        return yaml.safe_load(f)
                     return json.load(f)
             except Exception as e:
                 print(f"Error loading config: {e}")
@@ -54,10 +57,13 @@ class Config:
         }
     
     def save_config(self):
-        """Save current configuration to file"""
+        """Save current configuration to file (YAML or JSON)"""
         try:
             with open(self.config_file, 'w') as f:
-                json.dump(self.config_data, f, indent=4)
+                if self.config_file.endswith('.yaml') or self.config_file.endswith('.yml'):
+                    yaml.dump(self.config_data, f, default_flow_style=False, indent=2)
+                else:
+                    json.dump(self.config_data, f, indent=4)
         except Exception as e:
             print(f"Error saving config: {e}")
     

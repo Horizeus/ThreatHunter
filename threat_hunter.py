@@ -7,6 +7,7 @@ Description: Parses system logs and detects suspicious behavior patterns
 
 import argparse
 import sys
+import logging
 from datetime import datetime
 from pathlib import Path
 
@@ -21,7 +22,9 @@ from detectors.behavior_detector import BehaviorDetector
 from reporters.report_generator import ReportGenerator
 from utils.config import Config
 
-
+# Setup logging
+logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
+logger = logging.getLogger(__name__)
 def display_summary(alerts):
     """Display analysis summary"""
     print(f"\n{Fore.CYAN}{'='*50}")
@@ -51,8 +54,12 @@ def display_summary(alerts):
 
 
 class ThreatHunter:
-    def __init__(self):
-        self.config = Config()
+    def __init__(self, config_file=None):
+        # Default to YAML config if it exists, fallback to JSON
+        if config_file is None:
+            config_file = 'config.yaml' if Path('config.yaml').exists() else 'config.json'
+        
+        self.config = Config(config_file)
         self.behavior_detector = BehaviorDetector()
         self.report_generator = ReportGenerator()
         
@@ -71,8 +78,8 @@ class ThreatHunter:
     def analyze_logs(self, log_file, log_type, output_format='text', output_file=None):
         """Main analysis function"""
         try:
-            print(f"{Fore.YELLOW}[*] Analyzing log file: {log_file}{Style.RESET_ALL}")
-            print(f"{Fore.YELLOW}[*] Log type: {log_type}{Style.RESET_ALL}")
+            logger.info(f"Analyzing log file: {log_file}")
+            logger.info(f"Log type: {log_type}")
             
             # Parse logs based on type
             if log_type.lower() == 'windows':
@@ -83,15 +90,15 @@ class ThreatHunter:
                 events = parser.parse_syslog(log_file)
             else:
                 raise ValueError(f"Unsupported log type: {log_type}")
-            
-            print(f"{Fore.GREEN}[+] Parsed {len(events)} log events{Style.RESET_ALL}")
+
+            logger.info(f"Parsed {len(events)} log events")
             
             # Detect suspicious behavior
-            print(f"{Fore.YELLOW}[*] Analyzing for suspicious patterns...{Style.RESET_ALL}")
+            logger.info("Analyzing for suspicious patterns...")
             alerts = self.behavior_detector.analyze_events(events)
             
-            print(f"{Fore.RED if alerts else Fore.GREEN}[!] Found {len(alerts)} potential threats{Style.RESET_ALL}")
-            
+            logger.warning(f"Found {len(alerts)} potential threats" if alerts else "No potential threats found.")
+
             # Generate report
             report_data = {
                 'log_file': str(log_file),
@@ -119,7 +126,7 @@ class ThreatHunter:
             return report_data
             
         except Exception as e:
-            print(f"{Fore.RED}[ERROR] Analysis failed: {str(e)}{Style.RESET_ALL}")
+            logger.error(f"Analysis failed: {str(e)}")
             return None
 
 
@@ -153,9 +160,14 @@ Examples:
     threat_hunter.print_banner()
     
     if args.gui:
-        from gui.main_window import ThreatHunterGUI
-        app = ThreatHunterGUI()
-        app.run()
+        try:
+            from gui.main_window import ThreatHunterGUI
+            app = ThreatHunterGUI()
+            app.run()
+        except Exception as e:
+            print(f"{Fore.RED}[ERROR] GUI launch failed: {e}{Style.RESET_ALL}")
+            print(f"{Fore.YELLOW}[INFO] Falling back to command line mode{Style.RESET_ALL}")
+            parser.print_help()
     elif args.file and args.type:
         log_file = Path(args.file)
         if not log_file.exists():
