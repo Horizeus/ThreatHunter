@@ -43,7 +43,7 @@ A comprehensive Python toolkit for analyzing system logs (Windows/Linux) and det
 1. **Clone or download the project**
    ```bash
    # If using git
-   git clone <repository-url>
+   git clone https://github.com/Horizeus/ThreatHunter.git
    
    # Or download and extract the files
    ```
