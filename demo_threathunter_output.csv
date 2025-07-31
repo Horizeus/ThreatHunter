@@ -1,0 +1,7 @@
+Timestamp,User,Severity,Description,Computer,Event Type
+2024-01-15T14:20:15.123000+00:00,administrator,HIGH,"Brute force attack detected: 5 failed login attempts for user ""administrator"" from 10.0.0.50 within 5 minutes",,brute_force_attack
+2024-01-15T10:35:22.456Z,SYSTEM,HIGH,PowerShell Base64 encoded command detected,WORKSTATION-01,powershell_base64
+2024-01-15T10:35:22.456Z,SYSTEM,MEDIUM,Suspicious PowerShell keyword detected: bypass,WORKSTATION-01,suspicious_powershell
+2024-01-15T02:15:33.789Z,backdoor_user,MEDIUM,Suspicious activity outside business hours: User Account Created,DC-01,off_hours_activity
+2025-07-31T09:06:39.779651,www-data,MEDIUM,Suspicious command pattern detected,web-server-01,suspicious_command
+2025-07-31T10:26:39.779651,,HIGH,Suspicious user account created: backup_admin,db-server-02,suspicious_user_creation

