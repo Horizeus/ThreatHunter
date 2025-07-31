@@ -60,7 +60,7 @@ class ThreatHunter:
     def print_banner():
         banner = f"""
 {Fore.CYAN}╔═══════════════════════════════════════════╗
-║       🔍 THREAT HUNTER v1.0 Alpha         ║
+║        THREAT HUNTER v1.0 Alpha           ║
 ║      Log Analysis & Threat Detection      ║
 ╚═══════════════════════════════════════════╝{Style.RESET_ALL}
 
