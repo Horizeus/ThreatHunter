@@ -25,12 +25,14 @@ A comprehensive Python toolkit for analyzing system logs (Windows/Linux) and det
   - CSV format for spreadsheet analysis
   - Colored terminal output
 
-- **Bonus Features**
-  - 🖥️ GUI interface using tkinter
+- **Command Line Interface**
+  - 🎯 Interactive CLI mode with menu-driven navigation
+  - 💻 Direct command-line analysis
   - 🔍 VirusTotal API integration
   - 📊 Elasticsearch integration (optional)
   - ⚙️ Configurable detection rules
   - 🚀 Progress tracking and status updates
+  - 🆘 Built-in help and documentation
 
 ## 📋 Requirements
 
@@ -59,7 +61,28 @@ A comprehensive Python toolkit for analyzing system logs (Windows/Linux) and det
 
 ## 💻 Usage
 
-### Command Line Interface
+### 🚀 Quick Start (Recommended)
+
+```bash
+# Easy launcher for beginners
+python cli_launcher.py
+```
+
+### 🎯 Interactive Mode
+
+```bash
+# Launch interactive CLI menu
+python threat_hunter.py --interactive
+```
+
+The interactive mode provides:
+- 📋 Step-by-step log analysis
+- 🎭 Built-in demo mode
+- 📊 System information display
+- ⚙️ Configuration management
+- 📚 Comprehensive help system
+
+### 💻 Direct Command Line
 
 ```bash
 # Analyze Windows Event Log
@@ -74,19 +97,6 @@ python threat_hunter.py -f logfile.evtx -t windows --output-file my_report.txt
 # Generate CSV report
 python threat_hunter.py -f auth.log -t linux -o csv
 ```
-
-### GUI Mode
-
-```bash
-# Launch the graphical interface
-python threat_hunter.py --gui
-```
-
-The GUI provides an intuitive interface for:
-- Selecting log files
-- Choosing log types
-- Running analysis
-- Viewing results in real-time
 
 ### Demo Mode
 
@@ -160,8 +170,7 @@ threat_hunter/
 │   └── virustotal.py       # VirusTotal API client
 ├── utils/                   # Utility modules
 │   └── config.py           # Configuration management
-├── gui/                     # Graphical interface
-│   └── main_window.py      # tkinter GUI
+├── cli_launcher.py         # Easy CLI launcher script
 └── sample_logs/            # Sample log files for testing
 ```
 
@@ -220,9 +229,9 @@ To enable VirusTotal integration:
    - Run as administrator/root when analyzing system logs
    - Copy log files to accessible location
 
-3. **GUI not starting**
-   - Ensure tkinter is installed (usually comes with Python)
-   - On Linux: `sudo apt-get install python3-tk`
+3. **Interactive mode issues**
+   - Use `python cli_launcher.py` for the easiest experience
+   - Try `python threat_hunter.py --help` to verify installation
 
 4. **No events parsed**
    - Check log file format and path
