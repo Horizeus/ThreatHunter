@@ -17,10 +17,10 @@ init(autoreset=True)
 
 def print_banner():
     banner = f"""
-{Fore.CYAN}╔══════════════════════════════════════════════════╗
-║          🔍 THREAT HUNTER DEMO v1.0              ║
-║       Log Analysis & Threat Detection Demo       ║
-╚══════════════════════════════════════════════════╝{Style.RESET_ALL}
+{Fore.CYAN}+==================================================+
+|          [*] THREAT HUNTER DEMO v1.0             |
+|       Log Analysis & Threat Detection Demo       |
++==================================================+{Style.RESET_ALL}
 
 {Fore.GREEN}[+] Running demonstration with sample data...{Style.RESET_ALL}
     """
@@ -43,7 +43,7 @@ def demo_windows_analysis():
     print(f"{Fore.GREEN}[+] Parsed {len(events)} Windows events{Style.RESET_ALL}")
     
     # Show sample events
-    print(f"\n{Fore.CYAN}📋 Sample Windows Events:{Style.RESET_ALL}")
+    print(f"\n{Fore.CYAN}[*] Sample Windows Events:{Style.RESET_ALL}")
     for i, event in enumerate(events[:5]):
         print(f"  {i+1}. {event.get('description')} - {event.get('user', 'Unknown user')}")
     
@@ -59,18 +59,18 @@ def demo_windows_analysis():
         medium_alerts = [a for a in alerts if a.get('severity') == 'MEDIUM']
         
         if high_alerts:
-            print(f"\n{Fore.RED}🚨 HIGH PRIORITY ALERTS:{Style.RESET_ALL}")
+            print(f"\n{Fore.RED}[!] HIGH PRIORITY ALERTS:{Style.RESET_ALL}")
             for alert in high_alerts:
-                print(f"   • {alert['description']}")
+                print(f"   - {alert['description']}")
                 if alert.get('user'):
                     print(f"     User: {alert.get('user')}")
                 if alert.get('source_ip'):
                     print(f"     Source IP: {alert.get('source_ip')}")
         
         if medium_alerts:
-            print(f"\n{Fore.YELLOW}⚠️  MEDIUM PRIORITY ALERTS:{Style.RESET_ALL}")
+            print(f"\n{Fore.YELLOW}[*] MEDIUM PRIORITY ALERTS:{Style.RESET_ALL}")
             for alert in medium_alerts[:3]:
-                print(f"   • {alert['description']}")
+                print(f"   - {alert['description']}")
     
     return events, alerts
 
@@ -91,7 +91,7 @@ def demo_linux_analysis():
     print(f"{Fore.GREEN}[+] Parsed {len(events)} Linux events{Style.RESET_ALL}")
     
     # Show sample events
-    print(f"\n{Fore.CYAN}📋 Sample Linux Events:{Style.RESET_ALL}")
+    print(f"\n{Fore.CYAN}[*] Sample Linux Events:{Style.RESET_ALL}")
     for i, event in enumerate(events[:5]):
         print(f"  {i+1}. {event.get('description')} - {event.get('hostname', 'Unknown host')}")
     
@@ -107,18 +107,18 @@ def demo_linux_analysis():
         medium_alerts = [a for a in alerts if a.get('severity') == 'MEDIUM']
         
         if high_alerts:
-            print(f"\n{Fore.RED}🚨 HIGH PRIORITY ALERTS:{Style.RESET_ALL}")
+            print(f"\n{Fore.RED}[!] HIGH PRIORITY ALERTS:{Style.RESET_ALL}")
             for alert in high_alerts:
-                print(f"   • {alert['description']}")
+                print(f"   - {alert['description']}")
                 if alert.get('user'):
                     print(f"     User: {alert.get('user')}")
                 if alert.get('source_ip'):
                     print(f"     Source IP: {alert.get('source_ip')}")
         
         if medium_alerts:
-            print(f"\n{Fore.YELLOW}⚠️  MEDIUM PRIORITY ALERTS:{Style.RESET_ALL}")
+            print(f"\n{Fore.YELLOW}[*] MEDIUM PRIORITY ALERTS:{Style.RESET_ALL}")
             for alert in medium_alerts[:3]:
-                print(f"   • {alert['description']}")
+                print(f"   - {alert['description']}")
     
     return events, alerts
 
@@ -145,15 +145,15 @@ def demo_report_generation(all_events, all_alerts):
     
     # Text report
     reporter.generate_text_report(report_data, 'demo_threathunter_output.txt')
-    print(f"{Fore.GREEN}✓ Text report saved: demo_threathunter_output.txt{Style.RESET_ALL}")
+    print(f"{Fore.GREEN}[+] Text report saved: demo_threathunter_output.txt{Style.RESET_ALL}")
     
     # JSON report
     reporter.generate_json_report(report_data, 'demo_threathunter_output.json')
-    print(f"{Fore.GREEN}✓ JSON report saved: demo_threathunter_output.json{Style.RESET_ALL}")
+    print(f"{Fore.GREEN}[+] JSON report saved: demo_threathunter_output.json{Style.RESET_ALL}")
     
     # CSV report
     reporter.generate_csv_report(report_data, 'demo_threathunter_output.csv')
-    print(f"{Fore.GREEN}✓ CSV report saved: demo_threathunter_output.csv{Style.RESET_ALL}")
+    print(f"{Fore.GREEN}[+] CSV report saved: demo_threathunter_output.csv{Style.RESET_ALL}")
 
 def demo_features():
     """Demonstrate additional features"""
@@ -162,21 +162,21 @@ def demo_features():
     print(f"{'='*60}{Style.RESET_ALL}")
     
     features = [
-        "✅ Multi-platform log parsing (Windows EVTX + Linux syslog)",
-        "✅ Brute force attack detection (5+ failed logins in 5 minutes)",
-        "✅ PowerShell abuse detection (Base64 encoded commands)",
-        "✅ Suspicious process detection (mimikatz, psexec, netcat, etc.)",
-        "✅ Off-hours activity monitoring",
-        "✅ Privilege escalation detection",
-        "✅ Lateral movement detection",
-        "✅ Account anomaly detection",
-        "✅ Multiple output formats (Text, JSON, CSV)",
-        "✅ GUI interface available",
-        "✅ VirusTotal integration (with API key)",
-        "✅ Elasticsearch integration (optional)",
-        "✅ Configurable detection rules",
-        "✅ Colored terminal output",
-        "✅ Progress tracking and status updates"
+        "[+] Multi-platform log parsing (Windows EVTX + Linux syslog)",
+        "[+] Brute force attack detection (5+ failed logins in 5 minutes)",
+        "[+] PowerShell abuse detection (Base64 encoded commands)",
+        "[+] Suspicious process detection (mimikatz, psexec, netcat, etc.)",
+        "[+] Off-hours activity monitoring",
+        "[+] Privilege escalation detection",
+        "[+] Lateral movement detection",
+        "[+] Account anomaly detection",
+        "[+] Multiple output formats (Text, JSON, CSV)",
+        "[+] CLI interface available",
+        "[+] VirusTotal integration (with API key)",
+        "[+] Elasticsearch integration (optional)",
+        "[+] Configurable detection rules",
+        "[+] Colored terminal output",
+        "[+] Progress tracking and status updates"
     ]
     
     for feature in features:
@@ -207,8 +207,8 @@ def main():
     print(f"              DEMO SUMMARY")
     print(f"{'='*60}{Style.RESET_ALL}")
     
-    print(f"{Fore.GREEN}📊 Total Events Analyzed: {len(all_events)}{Style.RESET_ALL}")
-    print(f"{Fore.RED if all_alerts else Fore.GREEN}🚨 Total Threats Detected: {len(all_alerts)}{Style.RESET_ALL}")
+    print(f"{Fore.GREEN}[*] Total Events Analyzed: {len(all_events)}{Style.RESET_ALL}")
+    print(f"{Fore.RED if all_alerts else Fore.GREEN}[!] Total Threats Detected: {len(all_alerts)}{Style.RESET_ALL}")
     
     # Group alerts by severity
     if all_alerts:
@@ -220,12 +220,12 @@ def main():
         print(f"   - MEDIUM priority: {medium_count}")
         print(f"   - LOW priority: {low_count}")
     
-    print(f"\n{Fore.YELLOW}🚀 To use ThreatHunter:{Style.RESET_ALL}")
+    print(f"\n{Fore.YELLOW}[*] To use ThreatHunter:{Style.RESET_ALL}")
     print(f"   Command line: python threat_hunter.py -f logfile.evtx -t windows")
-    print(f"   GUI mode:     python threat_hunter.py --gui")
+    print(f"   Interactive:  python threat_hunter.py --interactive")
     print(f"   Help:         python threat_hunter.py --help")
     
-    print(f"\n{Fore.GREEN}✅ Demo completed! Check the generated report files.{Style.RESET_ALL}")
+    print(f"\n{Fore.GREEN}[+] Demo completed! Check the generated report files.{Style.RESET_ALL}")
 
 if __name__ == "__main__":
     main()

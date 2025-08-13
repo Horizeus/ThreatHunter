@@ -3,5 +3,5 @@ Timestamp,User,Severity,Description,Computer,Event Type
 2024-01-15T10:35:22.456Z,SYSTEM,HIGH,PowerShell Base64 encoded command detected,WORKSTATION-01,powershell_base64
 2024-01-15T10:35:22.456Z,SYSTEM,MEDIUM,Suspicious PowerShell keyword detected: bypass,WORKSTATION-01,suspicious_powershell
 2024-01-15T02:15:33.789Z,backdoor_user,MEDIUM,Suspicious activity outside business hours: User Account Created,DC-01,off_hours_activity
-2025-07-31T09:06:39.779651,www-data,MEDIUM,Suspicious command pattern detected,web-server-01,suspicious_command
-2025-07-31T10:26:39.779651,,HIGH,Suspicious user account created: backup_admin,db-server-02,suspicious_user_creation
+2025-08-13T10:19:34.568441,www-data,MEDIUM,Suspicious command pattern detected,web-server-01,suspicious_command
+2025-08-13T11:39:34.568441,,HIGH,Suspicious user account created: backup_admin,db-server-02,suspicious_user_creation

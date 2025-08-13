@@ -1,7 +1,7 @@
-Log Analysis Report for sample_logs\sample_syslog
+Log Analysis Report for sample_logs\sample_security.log
 ======================================================================
 Log Type: linux
-Analysis Time: 2025-07-31T10:35:40.360276
+Analysis Time: 2025-08-13T12:05:14.536049
 Total Events: 0
 Alerts Found: 0
 ======================================================================
