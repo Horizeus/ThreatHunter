@@ -59,6 +59,48 @@ A comprehensive Python toolkit for analyzing system logs (Windows/Linux) and det
    python threat_hunter.py --help
    ```
 
+### 🐉 For Kali Linux Users
+
+If you're using Kali Linux and want to build additional Go-based tools or extensions for ThreatHunter, you can install Go:
+
+1. **Update package lists**
+   ```bash
+   sudo apt update
+   ```
+
+2. **Install Go from Kali repositories**
+   ```bash
+   sudo apt install golang-go
+   ```
+
+3. **Alternative: Install latest Go version manually**
+   ```bash
+   # Download and install the latest Go version
+   wget https://go.dev/dl/go1.21.5.linux-amd64.tar.gz
+   sudo rm -rf /usr/local/go && sudo tar -C /usr/local -xzf go1.21.5.linux-amd64.tar.gz
+   
+   # Add Go to PATH (add to ~/.bashrc or ~/.zshrc for permanent)
+   export PATH=$PATH:/usr/local/go/bin
+   ```
+
+4. **Set up Go workspace (optional)**
+   ```bash
+   mkdir -p ~/go/{bin,src,pkg}
+   export GOPATH=$HOME/go
+   export PATH=$PATH:$GOPATH/bin
+   ```
+
+5. **Verify Go installation**
+   ```bash
+   go version
+   ```
+
+**Note for Penetration Testers**: While ThreatHunter is primarily Python-based, having Go installed allows you to:
+- Build additional log parsing tools
+- Create custom integrations with Go-based security tools
+- Extend ThreatHunter with high-performance modules
+- Use Go-based threat hunting tools alongside ThreatHunter
+
 ## 💻 Usage
 
 ### 🚀 Quick Start (Recommended)
@@ -236,6 +278,19 @@ To enable VirusTotal integration:
    - Check log file format and path
    - Verify log type selection (windows/linux)
    - Try the demo mode to verify installation
+
+5. **Go installation issues on Kali Linux**
+   ```bash
+   # If Go command not found after installation
+   echo 'export PATH=$PATH:/usr/local/go/bin' >> ~/.bashrc
+   source ~/.bashrc
+   
+   # Check Go installation
+   go version
+   
+   # Fix Go workspace permissions
+   sudo chown -R $USER:$USER ~/go
+   ```
 
 ## 🧪 Testing
 
